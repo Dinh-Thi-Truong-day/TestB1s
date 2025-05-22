@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz 1 - English Conversation</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 30px; }
+    .explanation { color: red; display: none; margin-top: 5px; }
+    button { margin-top: 20px; }
+    .detail { font-size: 14px; color: #555; margin-top: 5px; }
+
+    /* Style chung cho label */
+    label { cursor: pointer; display: block; margin: 4px 0; padding: 5px; border-radius: 4px; }
+
+    /* Khi chọn đáp án đúng */
+    label.correct {
+      background-color: #c8e6c9; /* xanh lá nhạt */
+      color: #2e7d32; /* xanh lá đậm */
+      font-weight: bold;
+    }
+
+    /* Khi chọn đáp án sai */
+    label.wrong {
+      background-color: #ffcdd2; /* đỏ nhạt */
+      color: #c62828; /* đỏ đậm */
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz 1 - English Conversation</h1>
+
+  <form id="quizForm">
+    <div class="question">
+      <p><strong>1. Hello. This is 2456780.</strong></p>
+      <label><input type="radio" name="q1" value="A"> A. Thank you for your help.</label>
+      <label><input type="radio" name="q1" value="B"> B. I'd like to speak to John, please.</label>
+      <label><input type="radio" name="q1" value="C"> C. I'll call again later.</label>
+      <div class="explanation" id="ex1">
+        → Đáp án đúng: <strong>B</strong><br>
+        - A: Câu này dùng để kết thúc cuộc trò chuyện, không phù hợp với lời mở đầu.<br>
+        - B: ✅ Đây là câu lịch sự để yêu cầu nói chuyện với ai đó trong cuộc gọi.<br>
+        - C: Thường dùng sau khi không thể liên lạc, không phù hợp ở đầu cuộc gọi.
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>2. I'm going to have a party on Saturday.</strong></p>
+      <label><input type="radio" name="q2" value="A"> A. How often is it?</label>
+      <label><input type="radio" name="q2" value="B"> B. Where to?</label>
+      <label><input type="radio" name="q2" value="C"> C. Who will come?</label>
+      <div class="explanation" id="ex2">
+        → Đáp án đúng: <strong>C</strong><br>
+        - A: Câu này không hợp lý vì “How often” dùng để hỏi tần suất (không áp dụng cho sự kiện cụ thể).<br>
+        - B: Không rõ ràng và không đúng ngữ pháp ("Where to?" không đúng khi nói về một bữa tiệc).<br>
+        - C: ✅ Hỏi "Ai sẽ đến?" là một câu hỏi hợp lý liên quan đến bữa tiệc cụ thể.
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>3. What do I do at the traffic lights?</strong></p>
+      <label><input type="radio" name="q3" value="A"> A. You can't.</label>
+      <label><input type="radio" name="q3" value="B"> B. That's right.</label>
+      <label><input type="radio" name="q3" value="C"> C. Turn left.</label>
+      <div class="explanation" id="ex3">
+        → Đáp án đúng: <strong>C</strong><br>
+        - A: “Bạn không thể” là câu trả lời không hợp lý, không rõ điều gì là không thể.<br>
+        - B: “Đúng rồi” không trả lời trực tiếp câu hỏi yêu cầu hướng dẫn.<br>
+        - C: ✅ “Rẽ trái” là một hành động rõ ràng và phù hợp khi chỉ đường.
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>4. I'll take these grapes, please.</strong></p>
+      <label><input type="radio" name="q4" value="A"> A. Would you like a bag?</label>
+      <label><input type="radio" name="q4" value="B"> B. They're over there.</label>
+      <label><input type="radio" name="q4" value="C"> C. Can I help you?</label>
+      <div class="explanation" id="ex4">
+        → Đáp án đúng: <strong>A</strong><br>
+        - A: ✅ “Bạn có muốn một cái túi không?” là phản ứng hợp lý sau khi khách quyết định mua.<br>
+        - B: “Chúng ở đằng kia” không hợp lý vì khách đã chọn rồi.<br>
+        - C: “Tôi giúp gì được?” thường dùng trước khi khách chọn hàng.
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>5. What colour will you paint the room?</strong></p>
+      <label><input type="radio" name="q5" value="A"> A. It wasn't very difficult.</label>
+      <label><input type="radio" name="q5" value="B"> B. I hope it was right.</label>
+      <label><input type="radio" name="q5" value="C"> C. We can't decide.</label>
+      <div class="explanation" id="ex5">
+        → Đáp án đúng: <strong>C</strong><br>
+        - A: “Nó không khó lắm” không liên quan đến việc chọn màu sơn.<br>
+        - B: “Tôi hy vọng là đúng” không hợp ngữ cảnh.<br>
+        - C: ✅ “Chúng tôi chưa quyết định” là phản hồi hợp lý cho câu hỏi về lựa chọn màu.
+      </div>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Nộp bài</button>
+    <button type="button" onclick="location.href='ReadingPart1.html'">Quay về Reading Part 1</button>
+  </form>
+
+  <script>
+    const answers = {
+      q1: "B",
+      q2: "C",
+      q3: "C",
+      q4: "A",
+      q5: "C"
+    };
+
+    function submitQuiz() {
+      const form = document.getElementById('quizForm');
+
+      // Ẩn tất cả giải thích trước khi hiển thị lại
+      for(let i=1; i<=5; i++) {
+        document.getElementById('ex' + i).style.display = 'none';
+      }
+
+      // Xoá hết class trên label trước khi gán lại
+      const allLabels = form.querySelectorAll('label');
+      allLabels.forEach(label => {
+        label.classList.remove('correct', 'wrong');
+      });
+
+      for (const key in answers) {
+        const selected = form.querySelector(`input[name="${key}"]:checked`);
+        const correctValue = answers[key];
+        const explanation = document.getElementById('ex' + key.slice(1));
+
+        // Lấy tất cả label của câu hỏi hiện tại
+        const labels = form.querySelectorAll(`input[name="${key}"]`).parentNode ? 
+          [form.querySelector(`input[name="${key}"]`).parentNode] : 
+          form.querySelectorAll(`input[name="${key}"]`).parentElement;
+
+        // Gán màu cho từng lựa chọn
+        const inputs = form.querySelectorAll(`input[name="${key}"]`);
+        inputs.forEach(input => {
+          const label = input.parentElement;
+          if (input.value === correctValue) {
+            // Nếu là đáp án đúng, đánh dấu label màu xanh lá
+            if (selected && selected.value === correctValue) {
+              label.classList.add('correct');
+            } else {
+              label.classList.remove('correct'); // Không tô màu nếu chưa chọn đúng
+            }
+          } else {
+            // Nếu là đáp án sai và được chọn, tô đỏ
+            if (selected && selected.value === input.value) {
+              label.classList.add('wrong');
+            } else {
+              label.classList.remove('wrong');
+            }
+          }
+        });
+
+        // Hiển thị lời giải thích nếu chọn sai hoặc không chọn gì
+        if (!selected || selected.value !== correctValue) {
+          explanation.style.display = 'block';
+        } else {
+          explanation.style.display = 'none';
+        }
+      }
+      alert("Đã nộp bài. Nếu có câu sai, lời giải thích sẽ hiển thị.");
+    }
+  </script>
+</body>
+</html>

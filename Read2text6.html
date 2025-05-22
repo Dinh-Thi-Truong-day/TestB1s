@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Reading Part 2 - Text 6</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+    .question { margin-top: 25px; }
+    .option { display: block; margin-left: 20px; cursor: pointer; padding: 4px; border-radius: 3px; }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .explanation { display: none; margin-top: 10px; color: #333; }
+    .score { font-weight: bold; font-size: 18px; margin-top: 30px; }
+    .btn { padding: 8px 15px; margin-top: 20px; cursor: pointer; }
+    #back-btn { display: inline-block; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h2>Reading Part 2 – Text 6</h2>
+  <p><strong>Questions 6–10. Look at the text in each question. What does it say? Choose the correct answer A, B, or C.</strong></p>
+
+  <form id="quizForm">
+    <!-- Question 6 -->
+    <div class="question" data-answer="A">
+      <p>6. Ed, Dennis rang: DON'T take the main road to Madingley—there's been an accident and you won't get to the match on time. Go through Drayton instead. Lynn</p>
+      <label class="option"><input type="radio" name="q6" value="A"> A. To arrive punctually, Ed should use a different route.</label>
+      <label class="option"><input type="radio" name="q6" value="B"> B. Dennis suggests that it's quicker to go on the main road.</label>
+      <label class="option"><input type="radio" name="q6" value="C"> C. If there's enough time, Lynn would like to see the match.</label>
+      <div class="explanation">✓ Giải thích: Vì tai nạn trên đường chính, Lynn bảo Ed đi đường khác để đến kịp trận đấu.</div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question" data-answer="C">
+      <p>7. SPORTS HALL – Final five minutes of bookings must be used to put equipment away</p>
+      <label class="option"><input type="radio" name="q7" value="A"> A. Booking now include an extra five minutes for equipment to be put away.</label>
+      <label class="option"><input type="radio" name="q7" value="B"> B. You have five minutes after bookings have finished to return any sports equipment used.</label>
+      <label class="option"><input type="radio" name="q7" value="C"> C. The hall must be cleared of equipment in the five minutes before bookings end.</label>
+      <div class="explanation">✓ Giải thích: 5 phút cuối của buổi thuê phải dùng để dọn thiết bị → phải dọn trước khi kết thúc.</div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question" data-answer="C">
+      <p>8. NO TURNING BY VEHICLES AT ANY TIME – Factory entrance always in use</p>
+      <label class="option"><input type="radio" name="q8" value="A"> A. Do not use this entrance to return vehicles to the factory.</label>
+      <label class="option"><input type="radio" name="q8" value="B"> B. Factory vehicles are turning here all the time.</label>
+      <label class="option"><input type="radio" name="q8" value="C"> C. Do not turn here as this entrance is used all the time.</label>
+      <div class="explanation">✓ Giải thích: Cấm quay xe tại đây vì cổng nhà máy luôn hoạt động.</div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question" data-answer="B">
+      <p>9. This tower’s in wonderful green stone, with 497 steps – stupidly, I climbed to the top! The view's supposed to be brilliant but yesterday was cloudy. – Kenny</p>
+      <label class="option"><input type="radio" name="q9" value="A"> A. the view it gave from the top.</label>
+      <label class="option"><input type="radio" name="q9" value="B"> B. the material used to build it.</label>
+      <label class="option"><input type="radio" name="q9" value="C"> C. the number of steps it has.</label>
+      <div class="explanation">✓ Giải thích: Kenny nói về đá xanh tuyệt đẹp của tòa tháp → thích chất liệu xây dựng.</div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question" data-answer="C">
+      <p>10. Market vehicles unload here. 07.00–10.00 daily – Customer parking allowed at other times</p>
+      <label class="option"><input type="radio" name="q10" value="A"> A. Customers may park outside the market for up to three hours.</label>
+      <label class="option"><input type="radio" name="q10" value="B"> B. You may unload your vehicles here at any time.</label>
+      <label class="option"><input type="radio" name="q10" value="C"> C. Customers may park here at times when vehicles are not inloading.</label>
+      <div class="explanation">✓ Giải thích: Khách hàng được phép đỗ xe ngoài khung giờ giao hàng (7h–10h sáng).</div>
+    </div>
+
+    <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    <div id="result" class="score"></div>
+  </form>
+
+  <a href="ReadingPart2.html" id="back-btn">← Trở về ReadingPart2.html</a>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll('.question');
+      questions.forEach(q => {
+        const correct = q.dataset.answer;
+        const selected = q.querySelector('input[type="radio"]:checked');
+        const options = q.querySelectorAll('.option');
+
+        options.forEach(opt => {
+          const input = opt.querySelector('input');
+          if (input.value === correct) {
+            opt.classList.add('correct');
+          }
+        });
+
+        if (selected) {
+          if (selected.value === correct) {
+            score++;
+          } else {
+            selected.closest('.option').classList.add('incorrect');
+            q.querySelector('.explanation').style.display = 'block';
+          }
+        }
+      });
+
+      document.getElementById('result').textContent = `Tổng điểm: ${score}/5`;
+    }
+  </script>
+</body>
+</html>

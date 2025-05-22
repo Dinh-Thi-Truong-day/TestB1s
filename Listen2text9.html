@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listen2text9 - Text 9</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listen2text9 - Text 9</h1>
+
+    <form id="quizForm">
+      <!-- Question 8 -->
+      <div class="question" data-correct="C">
+        <p>8. To really understand My life you need to</p>
+        <div class="answers">
+          <label><input type="radio" name="q8" value="A" /> A. read it very slowly.</label>
+          <label><input type="radio" name="q8" value="B" /> B. know about the writer’s life.</label>
+          <label><input type="radio" name="q8" value="C" /> C. read the writer’s other book.</label>
+        </div>
+        <div class="explanation">
+          Để hiểu thật sự "My life", bạn cần đọc cuốn sách khác của tác giả, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question" data-correct="B">
+        <p>9. In Goodbye to the fields, John goes to London because</p>
+        <div class="answers">
+          <label><input type="radio" name="q9" value="A" /> A. his parents do not like the country.</label>
+          <label><input type="radio" name="q9" value="B" /> B. his father has to be close to his work.</label>
+          <label><input type="radio" name="q9" value="C" /> C. his parents both come from the city.</label>
+        </div>
+        <div class="explanation">
+          John đến London vì cha anh phải gần nơi làm việc, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question" data-correct="A">
+        <p>10. The A-Z of photography will not interest experienced photographers because</p>
+        <div class="answers">
+          <label><input type="radio" name="q10" value="A" /> A. the information is unsuitable.</label>
+          <label><input type="radio" name="q10" value="B" /> B. the picture are simple.</label>
+          <label><input type="radio" name="q10" value="C" /> C. it says nothing about equipment.</label>
+        </div>
+        <div class="explanation">
+          Cuốn sách không hấp dẫn nhiếp ảnh gia kinh nghiệm vì thông tin không phù hợp, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 11 -->
+      <div class="question" data-correct="C">
+        <p>11. The presenter like Cooking for one because</p>
+        <div class="answers">
+          <label><input type="radio" name="q11" value="A" /> A. it taught her to cook Italian food.</label>
+          <label><input type="radio" name="q11" value="B" /> B. it contains only easy meals.</label>
+          <label><input type="radio" name="q11" value="C" /> C. she now likes cooking.</label>
+        </div>
+        <div class="explanation">
+          Người dẫn chương trình thích "Cooking for one" vì bây giờ cô ấy thích nấu ăn, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 12 -->
+      <div class="question" data-correct="B">
+        <p>12. What is wrong with Holidays in Europe?</p>
+        <div class="answers">
+          <label><input type="radio" name="q12" value="A" /> A. It leaves out well-known places.</label>
+          <label><input type="radio" name="q12" value="B" /> B. The maps are not very good.</label>
+          <label><input type="radio" name="q12" value="C" /> C. It is too expensive.</label>
+        </div>
+        <div class="explanation">
+          "Holidays in Europe" có vấn đề về bản đồ không tốt, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 13 -->
+      <div class="question" data-correct="C">
+        <p>13. Next week’s programme will be useful if you</p>
+        <div class="answers">
+          <label><input type="radio" name="q13" value="A" /> A. enjoy reading reports.</label>
+          <label><input type="radio" name="q13" value="B" /> B. are trying to save money.</label>
+          <label><input type="radio" name="q13" value="C" /> C. are planning to buy presents.</label>
+        </div>
+        <div class="explanation">
+          Chương trình tuần tới hữu ích nếu bạn đang lên kế hoạch mua quà, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart2.html">
+      <button class="btn">Quay lại ListeningPart2.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          // Reset class
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            // Đánh dấu đáp án đúng luôn
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            // Nếu người dùng chọn sai
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          // Tính điểm nếu chọn đúng
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          // Hiện giải thích
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        // Hiện tổng điểm
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

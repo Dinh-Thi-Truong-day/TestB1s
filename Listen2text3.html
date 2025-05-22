@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listen2text3 - Text 3</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listen2text3 - Text 3</h1>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question" data-correct="C">
+        <p>1. How much time for volunteering does the company allow per employee?</p>
+        <div class="answers">
+          <label><input type="radio" name="q1" value="A" /> A. two hours per week</label>
+          <label><input type="radio" name="q1" value="B" /> B. one day per month</label>
+          <label><input type="radio" name="q1" value="C" /> C. 8 hours per year</label>
+        </div>
+        <div class="explanation">
+          Công ty cho phép mỗi nhân viên tình nguyện 8 giờ mỗi năm, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question" data-correct="B">
+        <p>2. In feedback almost all employees said that volunteering improved their</p>
+        <div class="answers">
+          <label><input type="radio" name="q2" value="A" /> A. chances of promotion</label>
+          <label><input type="radio" name="q2" value="B" /> B. job satisfaction</label>
+          <label><input type="radio" name="q2" value="C" /> C. relationships with colleagues</label>
+        </div>
+        <div class="explanation">
+          Hầu hết nhân viên phản hồi rằng tình nguyện làm tăng sự hài lòng trong công việc, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" data-correct="C">
+        <p>3. Last year some staff helped unemployed people with their</p>
+        <div class="answers">
+          <label><input type="radio" name="q3" value="A" /> A. literacy skills</label>
+          <label><input type="radio" name="q3" value="B" /> B. job applications</label>
+          <label><input type="radio" name="q3" value="C" /> C. communication skills</label>
+        </div>
+        <div class="explanation">
+          Năm ngoái, một số nhân viên giúp người thất nghiệp về kỹ năng giao tiếp, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" data-correct="B">
+        <p>4. This year the company will start a new volunteering project with a local</p>
+        <div class="answers">
+          <label><input type="radio" name="q4" value="A" /> A. school</label>
+          <label><input type="radio" name="q4" value="B" /> B. park</label>
+          <label><input type="radio" name="q4" value="C" /> C. charity</label>
+        </div>
+        <div class="explanation">
+          Năm nay công ty bắt đầu dự án tình nguyện mới với một công viên địa phương, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question" data-correct="B">
+        <p>5. Where will the Digital Inclusion Day be held?</p>
+        <div class="answers">
+          <label><input type="radio" name="q5" value="A" /> A. at the company's training facility</label>
+          <label><input type="radio" name="q5" value="B" /> B. at a college</label>
+          <label><input type="radio" name="q5" value="C" /> C. in a community centre</label>
+        </div>
+        <div class="explanation">
+          Ngày Digital Inclusion sẽ được tổ chức tại một trường cao đẳng, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question" data-correct="A">
+        <p>6. What should staff do if they want to take part in the Digital Inclusion Day?</p>
+        <div class="answers">
+          <label><input type="radio" name="q6" value="A" /> A. fill in a form</label>
+          <label><input type="radio" name="q6" value="B" /> B. attend a training workshop</label>
+          <label><input type="radio" name="q6" value="C" /> C. get permission from their managers</label>
+        </div>
+        <div class="explanation">
+          Nhân viên muốn tham gia Ngày Digital Inclusion cần điền vào một mẫu đơn, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart2.html">
+      <button class="btn">Quay lại ListeningPart2.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          // Reset class
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            // Đánh dấu đáp án đúng luôn
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            // Nếu người dùng chọn sai
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          // Tính điểm nếu chọn đúng
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          // Hiện giải thích
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        // Hiện tổng điểm
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

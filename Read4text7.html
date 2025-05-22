@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reading Part 4 - Text 7</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 30px auto;
+      background: #f9f9f9;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-top: 0;
+    }
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background: #f9f9f9;
+      padding: 10px 20px;
+      z-index: 100;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .question p {
+      margin-bottom: 8px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .correct {
+      background-color: #d4edda;
+    }
+
+    .incorrect {
+      background-color: #f8d7da;
+    }
+
+    .explanation {
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .score {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .back {
+      margin-top: 30px;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background-color: #3498db;
+      padding: 10px 15px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sticky-header">
+    <h2>Reading Part 4 - Text 7</h2>
+    <p>
+      <strong>Read the text below and choose the correct word for each space. For each question, mark the letter next to the correct word A, B, C or D.</strong>
+    </p>
+    <p>
+      Several famous people are left-handed, (1) <strong><span id="q0_text">..........</span></strong> Julius Caesar, Napoleon, and Albert Einstein. Queen Victoria of England was also left-handed, (2) <strong><span id="q1_text">..........</span></strong> Prince Charles. Paul Mc Cartney of the Beatles plays (3) <strong><span id="q2_text">..........</span></strong> guitar the opposite way from other guitarists because he is left-handed. Marilyn Monroe, the famous American star was also a leftie. Are you a leftie (4) <strong><span id="q3_text">..........</span></strong> you write with your right hand? To understand (5) <strong><span id="q4_text">..........</span></strong> it is necessary to look at the brain. The brain is (6) <strong><span id="q5_text">..........</span></strong> into two hemispheres. The left hemisphere of the brain (7) <strong><span id="q6_text">..........</span></strong> the right side of the body, and the right hemisphere controls the left side. Both of the sides of the body receive the same information (8) <strong><span id="q7_text">..........</span></strong> the brain because the two hemispheres are connected. (9) <strong><span id="q8_text">..........</span></strong>, in the right handed people, the left hemisphere is stronger. In the left-handed people, it is the right hemisphere (10) <strong><span id="q9_text">..........</span></strong> is stronger.
+    </p>
+  </div>
+
+  <form id="quizForm">
+    <div id="questionsContainer"></div>
+    <button type="submit">Nộp bài</button>
+  </form>
+
+  <div id="score" class="score"></div>
+  <a href="ReadingPart4.html" class="back">⬅ Quay về ReadingPart4.html</a>
+
+  <script>
+    const questions = [
+      {
+        number: 1,
+        correct: "A",
+        options: { A: "such as", B: "so as", C: "so that", D: "such that" },
+        explanation: "'Such as' = như là (để liệt kê ví dụ)."
+      },
+      {
+        number: 2,
+        correct: "C",
+        options: { A: "is so and", B: "and", C: "and so is", D: "and is so" },
+        explanation: "'And so is' dùng để nói người khác cũng có đặc điểm tương tự."
+      },
+      {
+        number: 3,
+        correct: "C",
+        options: { A: "a", B: "an", C: "the", D: "no article" },
+        explanation: "'The guitar' vì nói đến loại nhạc cụ cụ thể."
+      },
+      {
+        number: 4,
+        correct: "D",
+        options: { A: "as", B: "because", C: "even", D: "even though" },
+        explanation: "'Even though' = mặc dù (diễn tả sự trái ngược)."
+      },
+      {
+        number: 5,
+        correct: "B",
+        options: { A: "leftie", B: "lefthandedness", C: "left-handed", D: "lefthander" },
+        explanation: "'Lefthandedness' = tình trạng thuận tay trái (danh từ)."
+      },
+      {
+        number: 6,
+        correct: "A",
+        options: { A: "divided", B: "cut", C: "subtracted", D: "separated" },
+        explanation: "'Divided into' = chia thành (cách dùng đúng)."
+      },
+      {
+        number: 7,
+        correct: "B",
+        options: { A: "conquers", B: "controls", C: "contrasts", D: "consists" },
+        explanation: "'Controls the right side' = điều khiển phía bên phải."
+      },
+      {
+        number: 8,
+        correct: "B",
+        options: { A: "on", B: "to", C: "from", D: "for" },
+        explanation: "'To the brain' = đến não bộ (cụm đúng)."
+      },
+      {
+        number: 9,
+        correct: "D",
+        options: { A: "In order that", B: "Therefore", C: "Never", D: "However" },
+        explanation: "'However' = tuy nhiên (đối lập)."
+      },
+      {
+        number: 10,
+        correct: "C",
+        options: { A: "who", B: "whom", C: "that", D: "where" },
+        explanation: "'That is stronger' = mệnh đề quan hệ chỉ vật (đúng)."
+      }
+    ];
+
+    const container = document.getElementById("questionsContainer");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `
+        <p><strong>Câu ${q.number}. Choose the correct word:</strong></p>
+        ${Object.entries(q.options)
+          .map(
+            ([key, val]) =>
+              `<label><input type="radio" name="q${index}" value="${key}"> ${key}. ${val}</label>`
+          )
+          .join("")}
+        <div id="explanation${index}" class="explanation"></div>
+      `;
+      container.appendChild(div);
+    });
+
+    document.getElementById("quizForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      let score = 0;
+
+      questions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const explanationDiv = document.getElementById(`explanation${index}`);
+        const qText = document.getElementById(`q${index}_text`);
+        const chosen = selected ? selected.value : null;
+        const correctText = q.options[q.correct];
+        qText.textContent = correctText;
+
+        if (selected) {
+          if (chosen === q.correct) {
+            selected.parentElement.classList.add("correct");
+            explanationDiv.textContent = "";
+            score++;
+          } else {
+            selected.parentElement.classList.add("incorrect");
+            explanationDiv.innerHTML = `❌ Sai. Đáp án đúng là <strong>${q.correct}. ${q.options[q.correct]}</strong><br>${q.explanation}`;
+          }
+        } else {
+          explanationDiv.innerHTML = `❌ Bạn chưa chọn đáp án. Đáp án đúng là <strong>${q.correct}. ${q.options[q.correct]}</strong><br>${q.explanation}`;
+        }
+      });
+
+      document.getElementById("score").textContent = `Tổng điểm: ${score} / 10`;
+    });
+  </script>
+</body>
+</html>

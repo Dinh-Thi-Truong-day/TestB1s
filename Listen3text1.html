@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listening Part 3 - Text 1</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listening Part 3 - Text 1</h1>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question" data-correct="A">
+        <p>1. Where is the new sports centre?</p>
+        <div class="answers">
+          <label><input type="radio" name="q1" value="A" /> A. Long Road</label>
+          <label><input type="radio" name="q1" value="B" /> B. Bridge Street</label>
+          <label><input type="radio" name="q1" value="C" /> C. Station Road</label>
+        </div>
+        <div class="explanation">
+          Trung tâm thể thao mới nằm trên đường Long Road, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question" data-correct="A">
+        <p>2. What sport can’t you do at the sports centre?</p>
+        <div class="answers">
+          <label><input type="radio" name="q2" value="A" /> A. tennis</label>
+          <label><input type="radio" name="q2" value="B" /> B. table-tennis</label>
+          <label><input type="radio" name="q2" value="C" /> C. volleyball</label>
+        </div>
+        <div class="explanation">
+          Bạn không thể chơi tennis tại trung tâm thể thao, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" data-correct="B">
+        <p>3. How much must Marina pay?</p>
+        <div class="answers">
+          <label><input type="radio" name="q3" value="A" /> A. £14 a year</label>
+          <label><input type="radio" name="q3" value="B" /> B. £30 a year</label>
+          <label><input type="radio" name="q3" value="C" /> C. £50 a year</label>
+        </div>
+        <div class="explanation">
+          Marina phải trả £30 mỗi năm, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" data-correct="B">
+        <p>4. How many days a week is the sports centre open late?</p>
+        <div class="answers">
+          <label><input type="radio" name="q4" value="A" /> A. 2</label>
+          <label><input type="radio" name="q4" value="B" /> B. 3</label>
+          <label><input type="radio" name="q4" value="C" /> C. 4</label>
+        </div>
+        <div class="explanation">
+          Trung tâm thể thao mở cửa muộn 3 ngày một tuần, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question" data-correct="B">
+        <p>5. Which bus goes to the sports centre?</p>
+        <div class="answers">
+          <label><input type="radio" name="q5" value="A" /> A. number 10</label>
+          <label><input type="radio" name="q5" value="B" /> B. number 16</label>
+          <label><input type="radio" name="q5" value="C" /> C. number 60</label>
+        </div>
+        <div class="explanation">
+          Xe buýt số 16 đi đến trung tâm thể thao, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question" data-correct="C">
+        <p>6. When will Michael and Marina go to the sports centre?</p>
+        <div class="answers">
+          <label><input type="radio" name="q6" value="A" /> A. Tuesday</label>
+          <label><input type="radio" name="q6" value="B" /> B. Thursday</label>
+          <label><input type="radio" name="q6" value="C" /> C. Friday</label>
+        </div>
+        <div class="explanation">
+          Michael và Marina sẽ đến trung tâm thể thao vào thứ Sáu, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart3.html">
+      <button class="btn">Quay lại ListeningPart3.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          // Reset classes
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            // Đánh dấu đáp án đúng luôn
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            // Nếu người dùng chọn sai
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          // Tính điểm nếu chọn đúng
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          // Hiện giải thích
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        // Hiện tổng điểm
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

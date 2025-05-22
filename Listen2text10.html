@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listen2text10 - Text 10</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listen2text10 - Text 10</h1>
+
+    <form id="quizForm">
+      <!-- Question 8 -->
+      <div class="question" data-correct="C">
+        <p>8. For his most recent television programme, John</p>
+        <div class="answers">
+          <label><input type="radio" name="q8" value="A" /> A. drove from the North to the South Pole.</label>
+          <label><input type="radio" name="q8" value="B" /> B. filmed relaxing beach holidays.</label>
+          <label><input type="radio" name="q8" value="C" /> C. went to the Pacific Ocean for a year.</label>
+        </div>
+        <div class="explanation">
+          Chương trình gần đây nhất của John là về việc anh ấy đã đi đến Thái Bình Dương trong một năm, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question" data-correct="C">
+        <p>9. John is giving up very long trips because</p>
+        <div class="answers">
+          <label><input type="radio" name="q9" value="A" /> A. he’s too old now.</label>
+          <label><input type="radio" name="q9" value="B" /> B. he’s been everywhere.</label>
+          <label><input type="radio" name="q9" value="C" /> C. they’re too tiring.</label>
+        </div>
+        <div class="explanation">
+          John từ bỏ những chuyến đi dài vì chúng quá mệt mỏi, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question" data-correct="B">
+        <p>10. John says his next television series might be about</p>
+        <div class="answers">
+          <label><input type="radio" name="q10" value="A" /> A. farms in Scotland.</label>
+          <label><input type="radio" name="q10" value="B" /> B. old ruins in Wales.</label>
+          <label><input type="radio" name="q10" value="C" /> C. cycling tours in France.</label>
+        </div>
+        <div class="explanation">
+          Series tiếp theo của John có thể nói về các tàn tích cổ ở Wales, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 11 -->
+      <div class="question" data-correct="A">
+        <p>11. John wants to encourage other people to</p>
+        <div class="answers">
+          <label><input type="radio" name="q11" value="A" /> A. be brave about travelling to new places.</label>
+          <label><input type="radio" name="q11" value="B" /> B. lose their fear of flying.</label>
+          <label><input type="radio" name="q11" value="C" /> C. make some trip alone.</label>
+        </div>
+        <div class="explanation">
+          John muốn khuyến khích mọi người dũng cảm khi đi đến những nơi mới, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 12 -->
+      <div class="question" data-correct="A">
+        <p>12. Why does John want to spend more time near home?</p>
+        <div class="answers">
+          <label><input type="radio" name="q12" value="A" /> A. His family might need him.</label>
+          <label><input type="radio" name="q12" value="B" /> B. His wife misses him.</label>
+          <label><input type="radio" name="q12" value="C" /> C. He was very young children.</label>
+        </div>
+        <div class="explanation">
+          John muốn dành nhiều thời gian gần gia đình vì họ có thể cần anh ấy, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 13 -->
+      <div class="question" data-correct="B">
+        <p>13. John has already written some</p>
+        <div class="answers">
+          <label><input type="radio" name="q13" value="A" /> A. newspaper articles.</label>
+          <label><input type="radio" name="q13" value="B" /> B. travel books.</label>
+          <label><input type="radio" name="q13" value="C" /> C. poems.</label>
+        </div>
+        <div class="explanation">
+          John đã viết một số sách du lịch, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart2.html">
+      <button class="btn">Quay lại ListeningPart2.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          // Reset classes
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            // Đánh dấu đáp án đúng luôn
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            // Nếu người dùng chọn sai
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          // Tính điểm nếu chọn đúng
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          // Hiện giải thích
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        // Hiện tổng điểm
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

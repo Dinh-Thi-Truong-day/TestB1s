@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listen2text4 - Text 4</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listen2text4 - Text 4</h1>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question" data-correct="A">
+        <p>1. Annie recommends that when cross-country skiing, the visitors should</p>
+        <div class="answers">
+          <label><input type="radio" name="q1" value="A" /> A. get away from the regular trails.</label>
+          <label><input type="radio" name="q1" value="B" /> B. stop to enjoy views of the scenery.</label>
+          <label><input type="radio" name="q1" value="C" /> C. go at a slow speed at the beginning.</label>
+        </div>
+        <div class="explanation">
+          Annie khuyên nên tránh các đường mòn thông thường khi trượt tuyết băng đồng, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question" data-correct="B">
+        <p>2. What does Annie tell the group about this afternoon's dog-sled trip?</p>
+        <div class="answers">
+          <label><input type="radio" name="q2" value="A" /> A. Those who want to can take part in a race.</label>
+          <label><input type="radio" name="q2" value="B" /> B. Anyone has the chance to drive a team of dogs.</label>
+          <label><input type="radio" name="q2" value="C" /> C. One group member will be chosen to lead the trail.</label>
+        </div>
+        <div class="explanation">
+          Annie nói rằng bất kỳ ai cũng có cơ hội điều khiển đội chó kéo xe, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" data-correct="A">
+        <p>3. What does Annie say about the team relay event?</p>
+        <div class="answers">
+          <label><input type="radio" name="q3" value="A" /> A. All participants receive a medal.</label>
+          <label><input type="radio" name="q3" value="B" /> B. The course is 4 km long.</label>
+          <label><input type="radio" name="q3" value="C" /> C. Each team is led by a teacher.</label>
+        </div>
+        <div class="explanation">
+          Annie nói rằng tất cả người tham gia sự kiện tiếp sức đội đều nhận huy chương, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" data-correct="C">
+        <p>4. On the snow-shoe trip, the visitors will</p>
+        <div class="answers">
+          <label><input type="radio" name="q4" value="A" /> A. visit an old gold mine.</label>
+          <label><input type="radio" name="q4" value="B" /> B. learn about unusual flowers.</label>
+          <label><input type="radio" name="q4" value="C" /> C. climb to the top of a mountain.</label>
+        </div>
+        <div class="explanation">
+          Trên chuyến đi dùng giày tuyết, khách tham quan sẽ leo lên đỉnh núi, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question" data-correct="A">
+        <p>5. The cost of accommodation in the mountain hut includes</p>
+        <div class="answers">
+          <label><input type="radio" name="q5" value="A" /> A. a supply of drinking water.</label>
+          <label><input type="radio" name="q5" value="B" /> B. transport of visitors' luggage.</label>
+          <label><input type="radio" name="q5" value="C" /> C. cooked meals.</label>
+        </div>
+        <div class="explanation">
+          Chi phí ở nhà nghỉ núi bao gồm nước uống, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question" data-correct="B">
+        <p>6. If there is a storm while the visitors are in the hut, they should</p>
+        <div class="answers">
+          <label><input type="radio" name="q6" value="A" /> A. contact the bus driver.</label>
+          <label><input type="radio" name="q6" value="B" /> B. wait until the weather improves.</label>
+          <label><input type="radio" name="q6" value="C" /> C. use the emergency locator beacon.</label>
+        </div>
+        <div class="explanation">
+          Nếu có bão khi khách ở trong nhà nghỉ, họ nên đợi thời tiết cải thiện, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart2.html">
+      <button class="btn">Quay lại ListeningPart2.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          // Reset class
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            // Đánh dấu đáp án đúng luôn
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            // Nếu người dùng chọn sai
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          // Tính điểm nếu chọn đúng
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          // Hiện giải thích
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        // Hiện tổng điểm
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

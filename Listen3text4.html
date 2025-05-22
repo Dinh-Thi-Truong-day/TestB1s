@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listening Part 3 - Text 4</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listening Part 3 - Text 4</h1>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question" data-correct="C">
+        <p>1. How is Steve going to go to London?</p>
+        <div class="answers">
+          <label><input type="radio" name="q1" value="A" /> A. by bus</label>
+          <label><input type="radio" name="q1" value="B" /> B. by car</label>
+          <label><input type="radio" name="q1" value="C" /> C. by train</label>
+        </div>
+        <div class="explanation">
+          Steve sẽ đi London bằng tàu hỏa, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question" data-correct="B">
+        <p>2. How much is a travel card?</p>
+        <div class="answers">
+          <label><input type="radio" name="q2" value="A" /> A. £6</label>
+          <label><input type="radio" name="q2" value="B" /> B. £16</label>
+          <label><input type="radio" name="q2" value="C" /> C. £60</label>
+        </div>
+        <div class="explanation">
+          Travel card có giá £16, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" data-correct="B">
+        <p>3. Jan will need………</p>
+        <div class="answers">
+          <label><input type="radio" name="q3" value="A" /> A. one photo</label>
+          <label><input type="radio" name="q3" value="B" /> B. two photos</label>
+          <label><input type="radio" name="q3" value="C" /> C. four photos</label>
+        </div>
+        <div class="explanation">
+          Jan cần hai tấm ảnh, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" data-correct="A">
+        <p>4. Photos are less expensive….</p>
+        <div class="answers">
+          <label><input type="radio" name="q4" value="A" /> A. in the photographer's shop</label>
+          <label><input type="radio" name="q4" value="B" /> B. in the library</label>
+          <label><input type="radio" name="q4" value="C" /> C. in the post office</label>
+        </div>
+        <div class="explanation">
+          Ảnh rẻ hơn tại tiệm chụp ảnh, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question" data-correct="A">
+        <p>5. For the travel card, Jan must take…</p>
+        <div class="answers">
+          <label><input type="radio" name="q5" value="A" /> A. a letter</label>
+          <label><input type="radio" name="q5" value="B" /> B. her passport</label>
+          <label><input type="radio" name="q5" value="C" /> C. her driving licence</label>
+        </div>
+        <div class="explanation">
+          Jan phải mang theo một lá thư, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question" data-correct="C">
+        <p>6. Jan can get a travel card from…</p>
+        <div class="answers">
+          <label><input type="radio" name="q6" value="A" /> A. her college</label>
+          <label><input type="radio" name="q6" value="B" /> B. a travel agent's</label>
+          <label><input type="radio" name="q6" value="C" /> C. the tourist office</label>
+        </div>
+        <div class="explanation">
+          Jan có thể lấy thẻ đi lại từ văn phòng du lịch, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart3.html">
+      <button class="btn">Quay lại ListeningPart3.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

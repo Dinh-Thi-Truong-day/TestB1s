@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Reading Part 2 - Text 5</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+    .question { margin-top: 25px; }
+    .option { display: block; margin-left: 20px; cursor: pointer; padding: 4px; border-radius: 3px; }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .explanation { display: none; margin-top: 10px; color: #333; }
+    .score { font-weight: bold; font-size: 18px; margin-top: 30px; }
+    .btn { padding: 8px 15px; margin-top: 20px; cursor: pointer; }
+    #back-btn { display: inline-block; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h2>Reading Part 2 – Text 5</h2>
+  <p><strong>Questions 6–10. Look at the text in each question. What does it say? Choose the correct answer A, B, or C.</strong></p>
+
+  <form id="quizForm">
+    <!-- Question 6 -->
+    <div class="question" data-answer="C">
+      <p>6. What a fantastic city. We found the restaurant you recommended but it was shut! Menu looks good value, so we'll definitely go before we leave. Elena and Tim</p>
+      <label class="option"><input type="radio" name="q6" value="A"> A. Elena and Tim will have to try the restaurant on their next visit.</label>
+      <label class="option"><input type="radio" name="q6" value="B"> B. Elena and Tim have discovered another good restaurant.</label>
+      <label class="option"><input type="radio" name="q6" value="C"> C. Elena and Tim think the restaurant's prices are reasonable.</label>
+      <div class="explanation">✓ Giải thích: Họ chưa ăn nhưng nói "Menu looks good value" → nghĩa là họ thấy giá cả hợp lý.</div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question" data-answer="B">
+      <p>7. CITY BUSES – Please have ready the exact fare for your journey.</p>
+      <label class="option"><input type="radio" name="q7" value="A"> A. All City Bus journeys cost exactly the same.</label>
+      <label class="option"><input type="radio" name="q7" value="B"> B. You need to have the correct money when you board the bus.</label>
+      <label class="option"><input type="radio" name="q7" value="C"> C. You must keep your ticket ready for checking.</label>
+      <div class="explanation">✓ Giải thích: Thông báo yêu cầu chuẩn bị "exact fare" → nghĩa là phải có đúng tiền khi lên xe.</div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question" data-answer="C">
+      <p>8. Frank, Rabbit Records phoned. The CD you ordered arrived today, but someone sold it. They're really sorry! They've reordered – available next Monday at the latest. Jan</p>
+      <label class="option"><input type="radio" name="q8" value="A"> A. to say that Frank's CD is ready for collection</label>
+      <label class="option"><input type="radio" name="q8" value="B"> B. to suggest Frank comes in later this week</label>
+      <label class="option"><input type="radio" name="q8" value="C"> C. to apologise for a mistake with Frank's order</label>
+      <div class="explanation">✓ Giải thích: Họ xin lỗi vì đã bán mất CD đặt trước của Frank → xin lỗi cho sự nhầm lẫn.</div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question" data-answer="A">
+      <p>9. The Pizza Place – Between 12 and 2 pm, minimum charge £3 per person.</p>
+      <label class="option"><input type="radio" name="q9" value="A"> A. Each customer will have to pay at least £3 at lunchtime.</label>
+      <label class="option"><input type="radio" name="q9" value="B"> B. You can buy a meal for only £3 at lunchtime.</label>
+      <label class="option"><input type="radio" name="q9" value="C"> C. A charge of £3 is added to each bill at lunchtime.</label>
+      <div class="explanation">✓ Giải thích: "Minimum charge £3" → mỗi khách bắt buộc phải chi ít nhất 3 bảng vào buổi trưa.</div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question" data-answer="A">
+      <p>10. To: Dr Hatton's students – From: College secretary<br>
+      Dr Hatton would like to remind you all that Thursday's lecture is to take place in the library (this week only). Start time unchanged.</p>
+      <label class="option"><input type="radio" name="q10" value="A"> A. The location of Thursday's lecture will be different from usual.</label>
+      <label class="option"><input type="radio" name="q10" value="B"> B. Students should check when this Thursday's lecture begins.</label>
+      <label class="option"><input type="radio" name="q10" value="C"> C. Dr Hatton had forgotten to announce the change on Thursday.</label>
+      <div class="explanation">✓ Giải thích: "Take place in the library (this week only)" → buổi học diễn ra ở địa điểm khác so với bình thường.</div>
+    </div>
+
+    <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    <div id="result" class="score"></div>
+  </form>
+
+  <a href="ReadingPart2.html" id="back-btn">← Trở về ReadingPart2.html</a>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll('.question');
+      questions.forEach(q => {
+        const correct = q.dataset.answer;
+        const selected = q.querySelector('input[type="radio"]:checked');
+        const options = q.querySelectorAll('.option');
+
+        options.forEach(opt => {
+          const input = opt.querySelector('input');
+          if (input.value === correct) {
+            opt.classList.add('correct');
+          }
+        });
+
+        if (selected) {
+          if (selected.value === correct) {
+            score++;
+          } else {
+            selected.closest('.option').classList.add('incorrect');
+            q.querySelector('.explanation').style.display = 'block';
+          }
+        }
+      });
+
+      document.getElementById('result').textContent = `Tổng điểm: ${score}/5`;
+    }
+  </script>
+</body>
+</html>

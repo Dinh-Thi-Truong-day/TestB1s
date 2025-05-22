@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Reading Part 3 - Polly Murray</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+    .question { margin-top: 25px; }
+    .option { display: block; margin-left: 20px; cursor: pointer; }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .explanation { display: none; margin-top: 10px; color: #333; }
+    .score { font-weight: bold; font-size: 18px; margin-top: 30px; }
+    .btn { padding: 8px 15px; margin-top: 20px; cursor: pointer; }
+    #back-btn { display: inline-block; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h2>Reading Part 3</h2>
+  <p><strong>Polly Murray, explorer</strong></p>
+  <p>
+    In a way, I've been an explorer all my life. My earliest memory is of a family camping holiday in Italy when I was six. 
+    We put up our tent at 4,000 meters! I remember walking down the mountain, holding my father's trousers to prevent me from 
+    falling over the rock edge. I didn't have any fear of heights then. Now I rather like looking down and feeling a bit afraid.<br><br>
+    I spend every winter in the mountains teaching skiing. The rest of the time I go exploring. This year, I've tested out an 
+    adventure holiday in Patagonia in Argentina for a travel company and helped a TV company make a nature film in the jungle in Peru. 
+    My most exciting trip has been one I took with my friend Tania. We sailed from Greenland across Baffin Bay to Bylot Island, which 
+    is just ice, mountains and polar bears. We crossed the island on foot in seven days but, when we got to the other side, the boat 
+    wasn't there to meet us as planned. There was a terrific storm and it couldn't get to the shore, which meant we had to wait two extra 
+    days. We had run out of food and were very hungry, and very nervous about the polar bears.<br><br>
+    To be an explorer, you need to be cool-headed. The minute you start to panic everything goes wrong, especially if you're climbing. 
+    I haven't had any serious accidents or injuries although I once had terrible toothache in Antarctica in the middle of nowhere. 
+    I just had to carry on in spite of the pain. I think I am a strong person and I can't imagine having any other kind of life.
+  </p>
+
+  <form id="quizForm">
+    <!-- Question 1 -->
+    <div class="question" data-answer="C">
+      <p>1. What is Polly’s main reason for writing this text?</p>
+      <label class="option"><input type="radio" name="q1" value="A"> A. to advertise exciting holidays</label>
+      <label class="option"><input type="radio" name="q1" value="B"> B. to recommend climbing as a sport</label>
+      <label class="option"><input type="radio" name="q1" value="C"> C. to describe her way of life</label>
+      <label class="option"><input type="radio" name="q1" value="D"> D. to encourage people to travel</label>
+      <div class="explanation">✓ Giải thích: Cô ấy chia sẻ các trải nghiệm cuộc sống thường nhật như dạy trượt tuyết, đi thám hiểm → Mục đích là mô tả lối sống.</div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question" data-answer="A">
+      <p>2. What happened to Polly at the age of six?</p>
+      <label class="option"><input type="radio" name="q2" value="A"> A. She went camping in the mountains.</label>
+      <label class="option"><input type="radio" name="q2" value="B"> B. She fell when she was mountain climbing.</label>
+      <label class="option"><input type="radio" name="q2" value="C"> C. She became frightened of high mountains.</label>
+      <label class="option"><input type="radio" name="q2" value="D"> D. She and her father got lost in the mountains.</label>
+      <div class="explanation">✓ Giải thích: “a family camping holiday in Italy when I was six… at 4,000 meters!” → đi cắm trại ở núi.</div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question" data-answer="D">
+      <p>3. Polly couldn't leave Bylot Island when she wanted to because</p>
+      <label class="option"><input type="radio" name="q3" value="A"> A. polar bears stopped her from crossing the ice.</label>
+      <label class="option"><input type="radio" name="q3" value="B"> B. she was too weak and hungry to travel.</label>
+      <label class="option"><input type="radio" name="q3" value="C"> C. she was waiting in the wrong place for her boat.</label>
+      <label class="option"><input type="radio" name="q3" value="D"> D. bad weather prevented her boat from reaching her.</label>
+      <div class="explanation">✓ Giải thích: “There was a terrific storm and it couldn't get to the shore” → thời tiết xấu ngăn tàu cập bờ.</div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question" data-answer="D">
+      <p>4. According to Polly, a good explorer is someone who ........</p>
+      <label class="option"><input type="radio" name="q4" value="A"> A. avoids accidents and injuries.</label>
+      <label class="option"><input type="radio" name="q4" value="B"> B. learns from bad experiences.</label>
+      <label class="option"><input type="radio" name="q4" value="C"> C. is able to climb difficult mountains.</label>
+      <label class="option"><input type="radio" name="q4" value="D"> D. can stay calm in any situation.</label>
+      <div class="explanation">✓ Giải thích: “you need to be cool-headed... the minute you panic, everything goes wrong” → cần giữ bình tĩnh.</div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question" data-answer="B">
+      <p>5. Which person is talking about Polly?</p>
+      <label class="option"><input type="radio" name="q5" value="A"> A. A travel company sent us to Peru together to see what we thought of an adventure holiday there.</label>
+      <label class="option"><input type="radio" name="q5" value="B"> B. She's a great ski instructor but I don't understand how she can enjoy feeling frightened of heights.</label>
+      <label class="option"><input type="radio" name="q5" value="C"> C. She had bad toothache once when she was on a trip and had to come home.</label>
+      <label class="option"><input type="radio" name="q5" value="D"> D. Exploring is fine when you're young but now she's older she's thinking about giving it up.</label>
+      <div class="explanation">✓ Giải thích: Đoạn đầu Polly nói rõ mình thích “feeling a bit afraid” khi nhìn xuống từ trên cao → B mô tả đúng nhất.</div>
+    </div>
+
+    <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    <div id="result" class="score"></div>
+  </form>
+
+  <a href="ReadingPart3.html" id="back-btn">← Trở về ReadingPart3.html</a>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll('.question');
+
+      questions.forEach(q => {
+        const correct = q.dataset.answer;
+        const selected = q.querySelector('input[type="radio"]:checked');
+        const options = q.querySelectorAll('.option');
+
+        options.forEach(opt => {
+          const input = opt.querySelector('input');
+          if (input.value === correct) {
+            opt.classList.add('correct');
+          }
+        });
+
+        if (selected) {
+          if (selected.value === correct) {
+            score++;
+          } else {
+            selected.parentElement.classList.add('incorrect');
+            q.querySelector('.explanation').style.display = 'block';
+          }
+        }
+      });
+
+      document.getElementById('result').textContent = `Tổng điểm: ${score}/5`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz 7 - English Conversation</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .explanation { color: red; display: none; margin-left: 15px; }
+    button { margin-top: 20px; }
+
+    /* Màu xanh cho đáp án đúng */
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    /* Màu đỏ cho câu sai */
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz 7 - English Conversation</h1>
+  <form id="quizForm">
+    <div class="question" id="q1-block">
+      <p>1. Is it a good film?</p>
+      <label><input type="radio" name="q1" value="A"> A. That's right</label><br>
+      <label><input type="radio" name="q1" value="B"> B. It's OK</label><br>
+      <label><input type="radio" name="q1" value="C"> C. I don't agree</label><br>
+      <div class="explanation" id="ex1">
+        → Đáp án B "It's OK" (Nó cũng ổn) là câu trả lời phù hợp cho câu hỏi về chất lượng phim.<br>
+        A. "That's right" (Đúng rồi) không phù hợp vì không trả lời trực tiếp về phim.<br>
+        C. "I don't agree" (Tôi không đồng ý) không hợp ngữ cảnh.
+      </div>
+    </div>
+
+    <div class="question" id="q2-block">
+      <p>2. I'm going to Tom's party tonight</p>
+      <label><input type="radio" name="q2" value="A"> A. Can I go too?</label><br>
+      <label><input type="radio" name="q2" value="B"> B. Let's go</label><br>
+      <label><input type="radio" name="q2" value="C"> C. Was it good?</label><br>
+      <div class="explanation" id="ex2">
+        → Đáp án A "Can I go too?" (Tôi cũng có thể đi chứ?) là câu trả lời phù hợp khi ai đó nói về việc đi dự tiệc.<br>
+        B. "Let's go" (Chúng ta đi thôi) không hợp vì người nói đã nói họ sẽ đi.<br>
+        C. "Was it good?" (Nó có hay không?) không đúng ngữ cảnh vì sự kiện chưa xảy ra.
+      </div>
+    </div>
+
+    <div class="question" id="q3-block">
+      <p>3. When did you lose your watch?</p>
+      <label><input type="radio" name="q3" value="A"> A. Once a week</label><br>
+      <label><input type="radio" name="q3" value="B"> B. For six days</label><br>
+      <label><input type="radio" name="q3" value="C"> C. A month ago</label><br>
+      <div class="explanation" id="ex3">
+        → Đáp án C "A month ago" (Cách đây một tháng) là câu trả lời đúng về thời gian mất đồng hồ.<br>
+        A. "Once a week" (Một lần một tuần) không trả lời đúng câu hỏi về thời điểm.<br>
+        B. "For six days" (Trong sáu ngày) không trả lời về thời điểm cụ thể.
+      </div>
+    </div>
+
+    <div class="question" id="q4-block">
+      <p>4. Sorry, I don't understand you.</p>
+      <label><input type="radio" name="q4" value="A"> A. Let me explain</label><br>
+      <label><input type="radio" name="q4" value="B"> B. I don't know</label><br>
+      <label><input type="radio" name="q4" value="C"> C. What does it mean?</label><br>
+      <div class="explanation" id="ex4">
+        → Đáp án A "Let me explain" (Để tôi giải thích) là câu trả lời phù hợp khi ai đó không hiểu.<br>
+        B. "I don't know" (Tôi không biết) không giúp giải quyết vấn đề.<br>
+        C. "What does it mean?" (Nó có nghĩa là gì?) không phù hợp ngữ cảnh trả lời.
+      </div>
+    </div>
+
+    <div class="question" id="q5-block">
+      <p>5. Shall we ask Paul to come with us?</p>
+      <label><input type="radio" name="q5" value="A"> A. I believe it</label><br>
+      <label><input type="radio" name="q5" value="B"> B. I'm sure</label><br>
+      <label><input type="radio" name="q5" value="C"> C. If you like</label><br>
+      <div class="explanation" id="ex5">
+        → Đáp án C "If you like" (Nếu bạn muốn) là câu trả lời phù hợp cho lời đề nghị.<br>
+        A. "I believe it" (Tôi tin thế) không hợp ngữ cảnh.<br>
+        B. "I'm sure" (Tôi chắc chắn) không phải phản hồi cho câu hỏi.
+      </div>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Nộp bài</button>
+    <button type="button" onclick="location.href='ReadingPart1.html'">Quay về Reading Part 1</button>
+
+  </form>
+
+  <script>
+    const answers = {
+      q1: "B",
+      q2: "A",
+      q3: "C",
+      q4: "A",
+      q5: "C"
+    };
+
+    function submitQuiz() {
+      const form = document.getElementById('quizForm');
+      for (const key in answers) {
+        const selected = form.querySelector(`input[name="${key}"]:checked`);
+        const explanation = document.getElementById('ex' + key.slice(1));
+        const questionBlock = document.getElementById(key + '-block');
+
+        // Reset styles and hide explanation first
+        questionBlock.classList.remove('correct', 'incorrect');
+        explanation.style.display = 'none';
+
+        if (!selected) {
+          // Nếu chưa chọn câu trả lời thì coi như sai
+          questionBlock.classList.add('incorrect');
+          explanation.style.display = 'block';
+        } else if (selected.value === answers[key]) {
+          // Đúng
+          questionBlock.classList.add('correct');
+          explanation.style.display = 'none';
+        } else {
+          // Sai
+          questionBlock.classList.add('incorrect');
+          explanation.style.display = 'block';
+        }
+      }
+      alert("Đã nộp bài. Nếu câu trả lời sai, lời giải thích sẽ hiển thị.");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listen2text8 - Text 8</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listen2text8 - Text 8</h1>
+
+    <form id="quizForm">
+      <!-- Question 8 -->
+      <div class="question" data-correct="B">
+        <p>8. The concert starts at</p>
+        <div class="answers">
+          <label><input type="radio" name="q8" value="A" /> A. 7 pm.</label>
+          <label><input type="radio" name="q8" value="B" /> B. 7.30 pm.</label>
+          <label><input type="radio" name="q8" value="C" /> C. 8.30 pm.</label>
+        </div>
+        <div class="explanation">
+          Buổi hòa nhạc bắt đầu lúc 7 giờ 30 tối, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question" data-correct="B">
+        <p>9. The money from the concert will pay for</p>
+        <div class="answers">
+          <label><input type="radio" name="q9" value="A" /> A. books for the school library.</label>
+          <label><input type="radio" name="q9" value="B" /> B. some school sports equipment.</label>
+          <label><input type="radio" name="q9" value="C" /> C. a school trip to London.</label>
+        </div>
+        <div class="explanation">
+          Tiền từ buổi hòa nhạc sẽ dùng để mua thiết bị thể thao cho trường, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question" data-correct="C">
+        <p>10. The Walking Club will meet</p>
+        <div class="answers">
+          <label><input type="radio" name="q10" value="A" /> A. in the market square.</label>
+          <label><input type="radio" name="q10" value="B" /> B. at the bus station.</label>
+          <label><input type="radio" name="q10" value="C" /> C. in the car park by the lake.</label>
+        </div>
+        <div class="explanation">
+          Câu lạc bộ đi bộ sẽ gặp nhau ở bãi đậu xe bên hồ, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 11 -->
+      <div class="question" data-correct="A">
+        <p>11. You can hear a talk by a writer</p>
+        <div class="answers">
+          <label><input type="radio" name="q11" value="A" /> A. in the library.</label>
+          <label><input type="radio" name="q11" value="B" /> B. at the bookshop.</label>
+          <label><input type="radio" name="q11" value="C" /> C. at the university.</label>
+        </div>
+        <div class="explanation">
+          Bạn có thể nghe một bài nói chuyện của tác giả trong thư viện, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 12 -->
+      <div class="question" data-correct="B">
+        <p>12. The writer will talk about</p>
+        <div class="answers">
+          <label><input type="radio" name="q12" value="A" /> A. a famous person she has written about.</label>
+          <label><input type="radio" name="q12" value="B" /> B. a recent journey she has made.</label>
+          <label><input type="radio" name="q12" value="C" /> C. the next book she will write.</label>
+        </div>
+        <div class="explanation">
+          Tác giả sẽ nói về chuyến đi gần đây của cô ấy, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 13 -->
+      <div class="question" data-correct="C">
+        <p>13. To go to the talk you should</p>
+        <div class="answers">
+          <label><input type="radio" name="q13" value="A" /> A. be a club member.</label>
+          <label><input type="radio" name="q13" value="B" /> B. be over 16.</label>
+          <label><input type="radio" name="q13" value="C" /> C. book a ticket.</label>
+        </div>
+        <div class="explanation">
+          Để tham gia buổi nói chuyện bạn nên đặt vé trước, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart2.html">
+      <button class="btn">Quay lại ListeningPart2.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          // Reset class
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            // Đánh dấu đáp án đúng luôn
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            // Nếu người dùng chọn sai
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          // Tính điểm nếu chọn đúng
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          // Hiện giải thích
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        // Hiện tổng điểm
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

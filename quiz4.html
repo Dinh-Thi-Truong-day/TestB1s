@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz 4 - English Conversation</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .explanation { display: none; margin-left: 15px; }
+    .explanation.wrong { color: red; }
+    .explanation.correct { color: green; }
+    button { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Quiz 4 - English Conversation</h1>
+  <form id="quizForm">
+    <div class="question">
+      <p>1. Who's that man with the green sweater?</p>
+      <label><input type="radio" name="q1" value="A"> A. I don't know it.</label><br>
+      <label><input type="radio" name="q1" value="B"> B. It's John's.</label><br>
+      <label><input type="radio" name="q1" value="C"> C. He's my brother.</label><br>
+      <div class="explanation wrong" id="ex1">
+        → Câu hỏi hỏi về người đàn ông mặc áo len xanh.<br>
+        A. "I don't know it." – Câu không chính xác về ngữ pháp.<br>
+        B. "It's John's." – Không đầy đủ, thiếu danh từ.<br>
+        ✅ C. "He's my brother." – Câu trả lời rõ ràng, đúng ngữ cảnh.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>2. Where's Amanda gone?</p>
+      <label><input type="radio" name="q2" value="A"> A. She'll arrive tomorrow.</label><br>
+      <label><input type="radio" name="q2" value="B"> B. She's at the station.</label><br>
+      <label><input type="radio" name="q2" value="C"> C. She's going to leave tonight.</label><br>
+      <div class="explanation wrong" id="ex2">
+        → Câu hỏi hỏi Amanda đang ở đâu.<br>
+        ✅ B. "She's at the station." – Câu trả lời hợp lý cho câu hỏi.<br>
+        A. "She'll arrive tomorrow." – Không trả lời đúng.<br>
+        C. "She's going to leave tonight." – Không trả lời đúng.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>3. I hate shopping.</p>
+      <label><input type="radio" name="q3" value="A"> A. That's all right.</label><br>
+      <label><input type="radio" name="q3" value="B"> B. Certainly.</label><br>
+      <label><input type="radio" name="q3" value="C"> C. So do I.</label><br>
+      <div class="explanation wrong" id="ex3">
+        → Người nói thể hiện sự không thích mua sắm.<br>
+        A. "That's all right." – Không cùng ý kiến.<br>
+        B. "Certainly." – Không hợp với ngữ cảnh.<br>
+        ✅ C. "So do I." – Phản hồi đồng tình.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>4. How long did the journey take?</p>
+      <label><input type="radio" name="q4" value="A"> A. Almost 5 hours.</label><br>
+      <label><input type="radio" name="q4" value="B"> B. About 500 kilometres.</label><br>
+      <label><input type="radio" name="q4" value="C"> C. Last week.</label><br>
+      <div class="explanation wrong" id="ex4">
+        → Câu hỏi hỏi về thời gian chuyến đi.<br>
+        ✅ A. "Almost 5 hours." – Câu trả lời đúng về thời gian.<br>
+        B. "About 500 kilometres." – Trả lời về khoảng cách, không đúng câu hỏi.<br>
+        C. "Last week." – Trả lời về thời điểm, không đúng câu hỏi.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>5. The room costs £55 a night.</p>
+      <label><input type="radio" name="q5" value="A"> A. Give me two, please.</label><br>
+      <label><input type="radio" name="q5" value="B"> B. That's a lot.</label><br>
+      <label><input type="radio" name="q5" value="C"> C. I don't take it.</label><br>
+      <div class="explanation wrong" id="ex5">
+        → Thông báo giá phòng.<br>
+        A. "Give me two, please." – Không hợp lý.<br>
+        ✅ B. "That's a lot." – Phản ứng hợp lý khi giá cao.<br>
+        C. "I don't take it." – Câu trả lời phủ nhận, không lịch sự.
+      </div>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Nộp bài</button>
+    <button type="button" onclick="location.href='ReadingPart1.html'">Quay về Reading Part 1</button>
+  </form>
+
+  <script>
+    const answers = {
+      q1: "C",
+      q2: "B",
+      q3: "C",
+      q4: "A",
+      q5: "B"
+    };
+
+    function submitQuiz() {
+      let form = document.getElementById('quizForm');
+      for (let key in answers) {
+        let selected = form.querySelector(`input[name="${key}"]:checked`);
+        let explanation = document.getElementById('ex' + key.slice(1));
+        if (!selected) {
+          // Chưa chọn -> ẩn luôn
+          explanation.style.display = 'none';
+          explanation.classList.remove('correct', 'wrong');
+        } else if (selected.value === answers[key]) {
+          explanation.style.display = 'block';
+          explanation.classList.add('correct');
+          explanation.classList.remove('wrong');
+        } else {
+          explanation.style.display = 'block';
+          explanation.classList.add('wrong');
+          explanation.classList.remove('correct');
+        }
+      }
+      alert("Đã nộp bài. Nếu sai, lời giải sẽ hiện ra.");
+    }
+  </script>
+</body>
+</html>

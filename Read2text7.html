@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Reading Part 2 - Text 7</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+    .question { margin-top: 25px; }
+    .option { display: block; margin-left: 20px; cursor: pointer; padding: 4px; border-radius: 3px; }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .explanation { display: none; margin-top: 10px; color: #333; }
+    .score { font-weight: bold; font-size: 18px; margin-top: 30px; }
+    .btn { padding: 8px 15px; margin-top: 20px; cursor: pointer; }
+    #back-btn { display: inline-block; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h2>Reading Part 2 – Text 7</h2>
+  <p><strong>Questions 6–10. Look at the text in each question. What does it say? Choose the correct answer A, B, or C.</strong></p>
+
+  <form id="quizForm">
+    <!-- Question 6 -->
+    <div class="question" data-answer="A">
+      <p>6. THROW AWAY ANY OF MEDICINE ONE MONTH AFTER OPENING THIS BOTTLE</p>
+      <label class="option"><input type="radio" name="q6" value="A"> A. You can use this medicine up to one month after opening it.</label>
+      <label class="option"><input type="radio" name="q6" value="B"> B. This bottle contains enough medicine for one month.</label>
+      <label class="option"><input type="radio" name="q6" value="C"> C. Unopened bottles of medicine must be thrown away within one month.</label>
+      <div class="explanation">✓ Giải thích: Thuốc chỉ dùng trong vòng 1 tháng sau khi mở → Đáp án đúng là A.</div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question" data-answer="C">
+      <p>7. Book now for Christmas. Don't leave it too late.</p>
+      <label class="option"><input type="radio" name="q7" value="A"> A. If you start this book now you will finish at Christmas.</label>
+      <label class="option"><input type="radio" name="q7" value="B"> B. If you have not made a reservation by Christmas you will be too late.</label>
+      <label class="option"><input type="radio" name="q7" value="C"> C. Make your reservation for Christmas soon.</label>
+      <div class="explanation">✓ Giải thích: Thông điệp là đặt chỗ sớm cho dịp Giáng sinh → Đáp án đúng là C.</div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question" data-answer="C">
+      <p>8. School entrance ahead dead slow – Who is this sign meant for?</p>
+      <label class="option"><input type="radio" name="q8" value="A"> A. teachers</label>
+      <label class="option"><input type="radio" name="q8" value="B"> B. children</label>
+      <label class="option"><input type="radio" name="q8" value="C"> C. drivers</label>
+      <div class="explanation">✓ Giải thích: Biển báo yêu cầu lái xe đi chậm → dành cho tài xế → Đáp án C.</div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question" data-answer="A">
+      <p>9. You can park your car...</p>
+      <label class="option"><input type="radio" name="q9" value="A"> A. behind the restaurant.</label>
+      <label class="option"><input type="radio" name="q9" value="B"> B. in front of the restaurant.</label>
+      <label class="option"><input type="radio" name="q9" value="C"> C. next to the restaurant.</label>
+      <div class="explanation">✓ Giải thích: Câu nói rõ bạn có thể đỗ phía sau nhà hàng → Đáp án A.</div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question" data-answer="B">
+      <p>10. What must you NOT do?</p>
+      <label class="option"><input type="radio" name="q10" value="A"> A. open the door.</label>
+      <label class="option"><input type="radio" name="q10" value="B"> B. put things in front of the door.</label>
+      <label class="option"><input type="radio" name="q10" value="C"> C. Lock the door.</label>
+      <div class="explanation">✓ Giải thích: Bạn không được để đồ chắn trước cửa → Đáp án B.</div>
+    </div>
+
+    <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    <div id="result" class="score"></div>
+  </form>
+
+  <a href="ReadingPart2.html" id="back-btn">← Trở về ReadingPart2.html</a>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll('.question');
+      questions.forEach(q => {
+        const correct = q.dataset.answer;
+        const selected = q.querySelector('input[type="radio"]:checked');
+        const options = q.querySelectorAll('.option');
+
+        options.forEach(opt => {
+          const input = opt.querySelector('input');
+          if (input.value === correct) {
+            opt.classList.add('correct');
+          }
+        });
+
+        if (selected) {
+          if (selected.value === correct) {
+            score++;
+          } else {
+            selected.closest('.option').classList.add('incorrect');
+            q.querySelector('.explanation').style.display = 'block';
+          }
+        }
+      });
+
+      document.getElementById('result').textContent = `Tổng điểm: ${score}/5`;
+    }
+  </script>
+</body>
+</html>

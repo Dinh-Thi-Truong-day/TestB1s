@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz 3 - English Conversation</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .explanation { color: red; display: none; margin-left: 15px; }
+    button { margin-top: 20px; }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz 3 - English Conversation</h1>
+  <form id="quizForm">
+    <div class="question">
+      <p>1. John's broken this plate.</p>
+      <label><input type="radio" name="q1" value="A" /> A. That's very good.</label><br />
+      <label><input type="radio" name="q1" value="B" /> B. Here you are.</label><br />
+      <label><input type="radio" name="q1" value="C" /> C. It doesn't matter.</label><br />
+      <div class="explanation" id="ex1">
+        → Câu hỏi thể hiện một tình huống tiêu cực (làm vỡ đĩa).<br />
+        A. "That's very good" – Không hợp lý.<br />
+        B. "Here you are" – Không liên quan.<br />
+        ✅ C. "It doesn't matter" – Câu trả lời lịch sự, phù hợp trong hoàn cảnh này.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>2. Is this your watch?</p>
+      <label><input type="radio" name="q2" value="A" /> A. It's three o'clock.</label><br />
+      <label><input type="radio" name="q2" value="B" /> B. I think it's Dave's.</label><br />
+      <label><input type="radio" name="q2" value="C" /> C. I'm sorry I'm late.</label><br />
+      <div class="explanation" id="ex2">
+        → Câu hỏi yêu cầu xác định chủ sở hữu chiếc đồng hồ.<br />
+        A. "It's three o'clock" – Không trả lời đúng ý.<br />
+        ✅ B. "I think it's Dave's." – Hợp lý, trả lời đúng câu hỏi.<br />
+        C. "I'm sorry I'm late" – Không liên quan.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>3. Can I have a sandwich?</p>
+      <label><input type="radio" name="q3" value="A" /> A. Yes, that's right.</label><br />
+      <label><input type="radio" name="q3" value="B" /> B. Yes, it is.</label><br />
+      <label><input type="radio" name="q3" value="C" /> C. Yes, of course.</label><br />
+      <div class="explanation" id="ex3">
+        → Người hỏi đang yêu cầu món ăn.<br />
+        A. "Yes, that's right" – Không phù hợp.<br />
+        B. "Yes, it is." – Không đúng ngữ cảnh.<br />
+        ✅ C. "Yes, of course." – Câu trả lời lịch sự, đúng yêu cầu.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>4. How many people were in the café?</p>
+      <label><input type="radio" name="q4" value="A" /> A. Not much.</label><br />
+      <label><input type="radio" name="q4" value="B" /> B. A few.</label><br />
+      <label><input type="radio" name="q4" value="C" /> C. A little.</label><br />
+      <div class="explanation" id="ex4">
+        → Câu hỏi yêu cầu về số lượng người (danh từ đếm được).<br />
+        A. "Not much" – Dùng cho danh từ không đếm được.<br />
+        ✅ B. "A few" – Đúng ngữ pháp cho danh từ đếm được (people).<br />
+        C. "A little" – Dùng cho danh từ không đếm được.
+      </div>
+    </div>
+
+    <div class="question">
+      <p>5. We're from London.</p>
+      <label><input type="radio" name="q5" value="A" /> A. Yes, please.</label><br />
+      <label><input type="radio" name="q5" value="B" /> B. How interesting.</label><br />
+      <label><input type="radio" name="q5" value="C" /> C. Not at all.</label><br />
+      <div class="explanation" id="ex5">
+        → Người kia chia sẻ một thông tin cá nhân.<br />
+        A. "Yes, please." – Không phù hợp.<br />
+        ✅ B. "How interesting." – Phản ứng tự nhiên, lịch sự.<br />
+        C. "Not at all." – Không đúng ngữ cảnh.
+      </div>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Nộp bài</button>
+    <button type="button" onclick="location.href='ReadingPart1.html'">Quay về Reading Part 1</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const answers = {
+      q1: "C",
+      q2: "B",
+      q3: "C",
+      q4: "B",
+      q5: "B"
+    };
+
+    function submitQuiz() {
+      let form = document.getElementById('quizForm');
+      let totalQuestions = Object.keys(answers).length;
+      let correctCount = 0;
+
+      for (let key in answers) {
+        let selected = form.querySelector(`input[name="${key}"]:checked`);
+        let explanation = document.getElementById('ex' + key.slice(1));
+
+        if (!selected) {
+          // Nếu chưa chọn câu trả lời
+          explanation.style.display = 'block';
+          explanation.innerHTML += '<br><span style="color:blue;">Bạn chưa chọn câu trả lời cho câu hỏi này!</span>';
+        } else if (selected.value !== answers[key]) {
+          explanation.style.display = 'block';
+        } else {
+          explanation.style.display = 'none';
+          correctCount++;
+        }
+      }
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = `Bạn trả lời đúng ${correctCount} trên ${totalQuestions} câu.`;
+      alert("Đã nộp bài. Nếu sai, lời giải sẽ hiện ra.");
+    }
+  </script>
+</body>
+</html>

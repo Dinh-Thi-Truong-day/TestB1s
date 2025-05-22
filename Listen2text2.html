@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listen2text2 - Text 2</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .answers label {
+        display: block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+      }
+
+      .explanation {
+        margin-left: 20px;
+        font-style: italic;
+        display: none;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Listen2text2 - Text 2</h1>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question" data-correct="B">
+        <p>1. When did the Street Play Scheme first take place?</p>
+        <div class="answers">
+          <label><input type="radio" name="q1" value="A" /> A. two years ago</label>
+          <label><input type="radio" name="q1" value="B" /> B. three years ago</label>
+          <label><input type="radio" name="q1" value="C" /> C. six years ago</label>
+        </div>
+        <div class="explanation">
+          Street Play Scheme lần đầu tiên diễn ra cách đây ba năm, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question" data-correct="A">
+        <p>2. How often is Beechwood Road closed to traffic now?</p>
+        <div class="answers">
+          <label><input type="radio" name="q2" value="A" /> A. once a week</label>
+          <label><input type="radio" name="q2" value="B" /> B. on Saturdays and Sundays</label>
+          <label><input type="radio" name="q2" value="C" /> C. once a month</label>
+        </div>
+        <div class="explanation">
+          Beechwood Road hiện được đóng cửa một lần mỗi tuần, đáp án đúng là <strong>A</strong>.
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" data-correct="C">
+        <p>3. Who is responsible for closing the road?</p>
+        <div class="answers">
+          <label><input type="radio" name="q3" value="A" /> A. a council official</label>
+          <label><input type="radio" name="q3" value="B" /> B. the police</label>
+          <label><input type="radio" name="q3" value="C" /> C. local wardens</label>
+        </div>
+        <div class="explanation">
+          Những người phụ trách đóng đường là các nhân viên quản lý địa phương (local wardens), đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" data-correct="B">
+        <p>4. Residents who want to use their cars</p>
+        <div class="answers">
+          <label><input type="radio" name="q4" value="A" /> A. have to park in another street.</label>
+          <label><input type="radio" name="q4" value="B" /> B. must drive very slowly.</label>
+          <label><input type="radio" name="q4" value="C" /> C. need permission from a warden.</label>
+        </div>
+        <div class="explanation">
+          Người dân muốn sử dụng xe của họ phải lái xe rất chậm, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question" data-correct="C">
+        <p>5. Alice says that Street Play Schemes are most needed in</p>
+        <div class="answers">
+          <label><input type="radio" name="q5" value="A" /> A. wealthy areas.</label>
+          <label><input type="radio" name="q5" value="B" /> B. quiet suburban areas.</label>
+          <label><input type="radio" name="q5" value="C" /> C. areas with heavy traffic.</label>
+        </div>
+        <div class="explanation">
+          Alice nói rằng chương trình Street Play cần thiết nhất ở các khu vực có giao thông đông đúc, đáp án đúng là <strong>C</strong>.
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question" data-correct="B">
+        <p>6. What has been the reaction of residents who are not parents?</p>
+        <div class="answers">
+          <label><input type="radio" name="q6" value="A" /> A. Many of them were unhappy at first.</label>
+          <label><input type="radio" name="q6" value="B" /> B. They like seeing children play in the street.</label>
+          <label><input type="radio" name="q6" value="C" /> C. They are surprised by the lack of noise.</label>
+        </div>
+        <div class="explanation">
+          Phản ứng của cư dân không phải là cha mẹ là họ thích nhìn thấy trẻ em chơi trên đường phố, đáp án đúng là <strong>B</strong>.
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <!-- Score display -->
+    <h2 id="score" style="display: none"></h2>
+
+    <!-- Back link -->
+    <a href="ListeningPart2.html">
+      <button class="btn">Quay lại ListenPart2.html</button>
+    </a>
+
+    <script>
+      function submitQuiz() {
+        const questions = document.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((q) => {
+          const correct = q.dataset.correct;
+          const selected = q.querySelector('input[type="radio"]:checked');
+          const labels = q.querySelectorAll("label");
+
+          // Reset class
+          labels.forEach((label) => {
+            label.classList.remove("correct", "incorrect");
+          });
+
+          labels.forEach((label) => {
+            const input = label.querySelector("input");
+
+            // Đánh dấu đáp án đúng luôn
+            if (input.value === correct) {
+              label.classList.add("correct");
+            }
+
+            // Nếu người dùng chọn sai
+            if (selected && input.checked && input.value !== correct) {
+              label.classList.add("incorrect");
+            }
+          });
+
+          // Tính điểm nếu chọn đúng
+          if (selected && selected.value === correct) {
+            score++;
+          }
+
+          // Hiện giải thích
+          q.querySelector(".explanation").style.display = "block";
+        });
+
+        // Hiện tổng điểm
+        const scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = `Tổng điểm: ${score} / ${questions.length}`;
+      }
+    </script>
+  </body>
+</html>

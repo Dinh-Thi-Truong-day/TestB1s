@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Listening Part 4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f1f1f1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .correct {
+      background-color: #d4edda;
+      border-color: #28a745;
+    }
+
+    .incorrect {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #answer-key {
+      background-color: #fff;
+      padding: 15px;
+      margin-top: 30px;
+      border-radius: 8px;
+      border-left: 5px solid #007bff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #answer-key h3 {
+      margin-top: 0;
+      color: #007bff;
+    }
+
+    #answer-key ul {
+      padding-left: 20px;
+    }
+
+    #answer-key li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Listening Part 4</h2>
+
+  <div id="inputs">
+    <!-- 11 ô nhập -->
+    <div class="input-box"><input type="text" placeholder="Câu 1" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 2" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 3" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 4" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 5" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 6" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 7" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 8" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 9" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 10" /></div>
+    <div class="input-box"><input type="text" placeholder="Câu 11" /></div>
+  </div>
+
+  <button onclick="checkAnswers()">Nộp bài</button>
+
+  <div id="answer-key" style="display: none;">
+    <h3>Đáp án đầy đủ:</h3>
+    <ul id="answer-list"></ul>
+  </div>
+
+  <script>
+    const correctAnswers = [
+      { name: "Jim Men", number: 146 },
+      { name: "Maria Job", number: 14 },
+      { name: "Sonia For", number: 345 },
+      { name: "Michael Endland", number: 124 },
+      { name: "Mathew Morning", number: 256 },
+      { name: "Lisa Lot", number: 13 },
+      { name: "Anna Party", number: 36 },
+      { name: "Peter Scotland", number: 236 },
+      { name: "Jeny Holiday", number: 23 },
+      { name: "Marcus Home Work", number: 35 },
+      { name: "Julia Possible", number: 356 }
+    ];
+
+    function stringSimilarity(str1, str2) {
+      const s1 = str1.toLowerCase().replace(/[^a-z]/g, "");
+      const s2 = str2.toLowerCase().replace(/[^a-z]/g, "");
+      let matches = 0;
+      for (let char of s1) {
+        if (s2.includes(char)) matches++;
+      }
+      return matches / Math.max(s1.length, s2.length);
+    }
+
+    function checkAnswers() {
+      const inputs = document.querySelectorAll("#inputs input");
+
+      inputs.forEach(input => {
+        input.classList.remove("correct", "incorrect");
+
+        const text = input.value.trim();
+        const match = text.match(/(.*)\s+(\d{1,4})$/);
+
+        if (!match) {
+          input.classList.add("incorrect");
+          input.title = "Không đúng định dạng (Tên + số)";
+          return;
+        }
+
+        const inputName = match[1];
+        const inputNumber = parseInt(match[2]);
+
+        let found = false;
+
+        for (const ans of correctAnswers) {
+          const similarity = stringSimilarity(ans.name, inputName);
+          if (similarity >= 0.9 && inputNumber === ans.number) {
+            input.classList.add("correct");
+            input.title = "Đúng!";
+            found = true;
+            break;
+          }
+        }
+
+        if (!found) {
+          input.classList.add("incorrect");
+
+          // Gợi ý gần đúng
+          let best = correctAnswers.map(a => ({
+            sim: stringSimilarity(a.name, inputName),
+            data: a
+          })).sort((a, b) => b.sim - a.sim)[0];
+
+          input.title = `Đáp án gần đúng: ${best.data.name} (${best.data.number})`;
+        }
+      });
+
+      // Hiển thị đáp án
+      const answerList = document.getElementById("answer-list");
+      answerList.innerHTML = "";
+      correctAnswers.forEach((ans, i) => {
+        const li = document.createElement("li");
+        li.textContent = `Câu ${i + 1}: ${ans.name} (${ans.number})`;
+        answerList.appendChild(li);
+      });
+      document.getElementById("answer-key").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

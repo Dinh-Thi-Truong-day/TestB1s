@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reading Part 4 - Text 5</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 30px auto;
+        background: #f9f9f9;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      h2 {
+        color: #2c3e50;
+        margin-top: 0;
+      }
+
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        background: #f9f9f9;
+        padding: 10px 20px;
+        z-index: 100;
+        border-bottom: 2px solid #ddd;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .question p {
+        margin-bottom: 8px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .correct {
+        background-color: #d4edda;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+      }
+
+      .explanation {
+        margin-top: 10px;
+        font-style: italic;
+      }
+
+      .score {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      .back {
+        margin-top: 30px;
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        background-color: #3498db;
+        padding: 10px 15px;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sticky-header">
+      <h2>Reading Part 4 - Text 5</h2>
+      <p>
+        <strong>Read the text below and choose the correct word for each space. For
+        each question, mark the letter next to the correct word A, B, C or D.</strong>
+      </p>
+      <p>
+        NEW OPPORTUNITIES WITH AN OPEN UNIVERSITY DEGREE<br />
+        Like any other university, the Open University can give you a degree.
+        However, you don’t have to (61)
+        <strong><span id="q0_text">..........</span></strong> working to study. It
+        can also open up a whole variety (62)
+        <strong><span id="q1_text">..........</span></strong> interests. If you
+        have (63) <strong><span id="q2_text">..........</span></strong> studied
+        before, you will enjoy the special, new pleasure of (64)
+        <strong><span id="q3_text">..........</span></strong> your knowledge. You
+        will make friends of (65)
+        <strong><span id="q4_text">..........</span></strong> kinds. You may also
+        (66) <strong><span id="q5_text">..........</span></strong> that your
+        qualification provides new career opportunities. You don’t actually (67)
+        <strong><span id="q6_text">..........</span></strong> to the Open
+        University for lectures, but study at home, using television, radio and
+        computer software. You can (68)
+        <strong><span id="q7_text">..........</span></strong> one class a month if
+        you wish at an Open University centre. Of course, there are exams to take,
+        as in (69)
+        <strong><span id="q8_text">..........</span></strong> university. If you
+        (70) <strong><span id="q9_text">..........</span></strong> like to know
+        more, all you have to do is complete the form below.
+      </p>
+    </div>
+
+    <form id="quizForm">
+      <div id="questionsContainer"></div>
+      <button type="submit">Nộp bài</button>
+    </form>
+
+    <div id="score" class="score"></div>
+    <a href="ReadingPart4.html" class="back">⬅ Quay về ReadingPart4.html</a>
+
+    <script>
+      const questions = [
+        {
+          number: 61,
+          correct: "D",
+          options: {
+            A: "stop",
+            B: "end",
+            C: "break",
+            D: "leave",
+          },
+          explanation: "Leave working = nghỉ việc. Các từ khác không phù hợp về ngữ cảnh.",
+        },
+        {
+          number: 62,
+          correct: "B",
+          options: {
+            A: "from",
+            B: "of",
+            C: "in",
+            D: "for",
+          },
+          explanation: "A variety of = một loạt các... là cụm từ cố định.",
+        },
+        {
+          number: 63,
+          correct: "B",
+          options: {
+            A: "ever",
+            B: "never",
+            C: "often",
+            D: "always",
+          },
+          explanation: "If you have never studied before = nếu bạn chưa từng học trước đây.",
+        },
+        {
+          number: 64,
+          correct: "A",
+          options: {
+            A: "growing",
+            B: "changing",
+            C: "adding",
+            D: "increasing",
+          },
+          explanation: "'Grow your knowledge' = mở rộng kiến thức. Cách dùng phổ biến.",
+        },
+        {
+          number: 65,
+          correct: "A",
+          options: {
+            A: "all",
+            B: "each",
+            C: "both",
+            D: "every",
+          },
+          explanation: "'All kinds' = mọi loại người. Cụm từ cố định.",
+        },
+        {
+          number: 66,
+          correct: "B",
+          options: {
+            A: "suggest",
+            B: "find",
+            C: "wish",
+            D: "want",
+          },
+          explanation: "'You may find that...' = bạn có thể nhận ra rằng.",
+        },
+        {
+          number: 67,
+          correct: "D",
+          options: {
+            A: "join",
+            B: "enter",
+            C: "arrive",
+            D: "go",
+          },
+          explanation: "'You don't go to university' = bạn không cần đến trường.",
+        },
+        {
+          number: 68,
+          correct: "B",
+          options: {
+            A: "give",
+            B: "attend",
+            C: "learn",
+            D: "study",
+          },
+          explanation: "'Attend a class' = tham gia lớp học.",
+        },
+        {
+          number: 69,
+          correct: "A",
+          options: {
+            A: "any",
+            B: "some",
+            C: "many",
+            D: "most",
+          },
+          explanation: "'As in any university' = như bất kỳ trường nào.",
+        },
+        {
+          number: 70,
+          correct: "C",
+          options: {
+            A: "did",
+            B: "will",
+            C: "would",
+            D: "can",
+          },
+          explanation: "'If you would like to know more' = nếu bạn muốn biết thêm.",
+        },
+      ];
+
+      const container = document.getElementById("questionsContainer");
+
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `
+          <p><strong>${q.number}. Choose the correct word:</strong></p>
+          ${Object.entries(q.options)
+            .map(
+              ([key, val]) =>
+                `<label><input type="radio" name="q${index}" value="${key}"> ${key}. ${val}</label>`
+            )
+            .join("")}
+          <div id="explanation${index}" class="explanation"></div>
+        `;
+        container.appendChild(div);
+      });
+
+      document
+        .getElementById("quizForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let score = 0;
+
+          questions.forEach((q, index) => {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            const explanationDiv = document.getElementById(`explanation${index}`);
+            const qText = document.getElementById(`q${index}_text`);
+            const chosen = selected ? selected.value : null;
+            const correctText = q.options[q.correct];
+            qText.textContent = correctText;
+
+            if (selected) {
+              if (chosen === q.correct) {
+                selected.parentElement.classList.add("correct");
+                explanationDiv.textContent = "";
+                score++;
+              } else {
+                selected.parentElement.classList.add("incorrect");
+                explanationDiv.innerHTML = `❌ Sai. Đáp án đúng là <strong>${q.correct}. ${q.options[q.correct]}</strong><br>${q.explanation}`;
+              }
+            } else {
+              explanationDiv.innerHTML = `❌ Bạn chưa chọn đáp án. Đáp án đúng là <strong>${q.correct}. ${q.options[q.correct]}</strong><br>${q.explanation}`;
+            }
+          });
+
+          document.getElementById("score").textContent = `Tổng điểm: ${score} / 10`;
+        });
+    </script>
+  </body>
+</html>
